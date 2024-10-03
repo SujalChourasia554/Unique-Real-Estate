@@ -1,14 +1,22 @@
+import Image from 'next/image';
 
 export default function AminitiesCard(props: any) {
     return (
         <>
-            <div id="card" className="group relative w-full h-[11.75rem] shadow-box-shadow-4 cardshadow rounded-[0.5rem] pt-[2.5rem]  pb-[2.188rem] custom_small:w-[15.43rem] md:w-[12.125rem] md:h-[13.563rem] custom_screen:h-[15.25rem] custom_screen:w-[15.938rem] hover:bg-color-orange hover:cursor-pointer transition duration-300 ease-in-out transform ">
+            <div id="card" className="group relative w-full h-[11.75rem] shadow-box-shadow-4 cardshadow rounded-[0.5rem] pt-[2.5rem] pb-[2.188rem] custom_small:w-[15.43rem] md:w-[12.125rem] md:h-[13.563rem] custom_screen:h-[15.25rem] custom_screen:w-[15.938rem] hover:bg-color-orange hover:cursor-pointer transition duration-300 ease-in-out transform ">
                 <div className="w-full h-full">
                     <div className="w-full h-[7.875rem] flex flex-col">
 
                         <div className='h-[5rem] flex justify-center'>
                             <div className="size-[3.75rem] flex justify-center place-items-center rounded-[31.25rem] bg-lightPink md:size-[5rem] custom_screen:size-[6.25rem]">
-                                <img src={props.img} className="size-[1.563rem] md:size-[1.875rem] custom_screen:size-[2.813rem] fill-color-orange"></img>
+                                {/* Replaced <img> with <Image /> and added alt attribute */}
+                                <Image
+                                    src={props.img.startsWith('/') ? props.img : `/aminitiesIcons/road.png`}
+                                    alt={props.title || 'Amenity image'}
+                                    width={40}  // Adjust width as per your image size
+                                    height={40} // Adjust height as per your image size
+                                    className="size-[1.563rem] md:size-[1.875rem] custom_screen:size-[2.813rem] fill-color-orange"
+                                />
                             </div>
                         </div>
 
@@ -27,5 +35,5 @@ export default function AminitiesCard(props: any) {
                 </div>
             </div>
         </>
-    )
+    );
 }

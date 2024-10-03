@@ -1,6 +1,7 @@
 "use client"
 import { gsap } from "gsap";
 import { MutableRefObject, useRef } from "react";
+import Image from "next/image";
 
 
 interface CardProps{
@@ -27,9 +28,19 @@ const Card: React.FC<CardProps> = ({url , location , text , date}) => {
       onMouseEnter={() => handleImageScaleAnimation('enter')}
       onMouseLeave={() => handleImageScaleAnimation('exit')} 
       id="card-container" className="w-full bg-white">
-          <div id="image-container" className="w-full h-[13.5rem] md:h-[18rem] overflow-hidden ">
-              <img ref={cardImgRef} className=" w-full h-full object-cover  hover:cursor-pointer " src={url} alt="" />
-          </div>
+          <div
+                id="image-container"
+                className="relative w-full h-[13.5rem] md:h-[18rem] overflow-hidden"
+            >
+                <Image
+                    ref={cardImgRef}
+                    className="object-cover hover:cursor-pointer"
+                    src={url}
+                    alt=""
+                    layout="fill" // Ensures the image fills the parent container
+                    objectFit="cover" // Ensures the image covers the area
+                />
+            </div>
           <div id="dets-container" className="w-full p-4">
               <div id="icons" className="p-2 flex gap-10 mt-2">
                   <div id="admin" className="flex items-center">

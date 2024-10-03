@@ -1,6 +1,7 @@
 "use client"
 import { gsap } from "gsap";
 import { MutableRefObject, useRef, useState } from "react";
+import Image from 'next/image';
 
 
 interface FeaturesCardProps{
@@ -141,7 +142,15 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({url , isRent ,purpose , loca
             </div>
             
             {/* THIS IS THE CARD IMAGE */}
-            <img ref={cardImgRef} id="CardImg" className="w-full h-full object-cover hover:cursor-pointer " src={url} alt=""/>
+            <Image
+                    ref={cardImgRef}
+                    id="CardImg"
+                    className="w-full h-full object-cover hover:cursor-pointer"
+                    src={url}
+                    alt="Feature Image"
+                    layout="fill" // Adjust based on your design
+                    objectFit="cover" // Maintains aspect ratio
+                />
 
           </div>
 
